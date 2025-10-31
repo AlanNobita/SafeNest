@@ -1,0 +1,640 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="SafeNest - AI-Powered Smart Home & Architecture Platform for intelligent home automation and security">
+    <meta name="keywords" content="smart home, AI architecture, home automation, security, energy management">
+    <meta name="author" content="SafeNest Technologies">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://safenest.ai/">
+    <meta property="og:title" content="SafeNest - AI-Powered Smart Home & Architecture Platform">
+    <meta property="og:description" content="Transform your home with AI-powered security, automation, and architectural design">
+    <meta property="og:image" content="{% static 'images/og-image.jpg' %}">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://safenest.ai/">
+    <meta property="twitter:title" content="SafeNest - AI-Powered Smart Home & Architecture Platform">
+    <meta property="twitter:description" content="Transform your home with AI-powered security, automation, and architectural design">
+    <meta property="twitter:image" content="{% static 'images/og-image.jpg' %}">
+    
+    <title>{% block title %}SafeNest - AI-Powered Smart Home & Architecture Platform{% endblock %}</title>
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Inter Font for typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Critical CSS for above-the-fold content -->
+    <style>
+        /* Critical CSS - Above the fold styles */
+        :root {
+            --enterprise-brand-primary: #0A74DA;
+            --enterprise-brand-secondary: #00529B;
+            --enterprise-bg-primary: #0D1117;
+            --enterprise-bg-secondary: #161B22;
+            --enterprise-bg-tertiary: #21262D;
+            --enterprise-text-primary: #F0F6FC;
+            --enterprise-text-secondary: #8B949E;
+            --enterprise-border-primary: #30363D;
+            --enterprise-border-accent: #0A74DA;
+        }
+        
+        [data-theme="light"] {
+            --enterprise-bg-primary: #F0F6FC;
+            --enterprise-bg-secondary: #FFFFFF;
+            --enterprise-bg-tertiary: #F1F3F5;
+            --enterprise-text-primary: #0D1117;
+            --enterprise-text-secondary: #656D76;
+            --enterprise-border-primary: #D1D9E0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-size: 0.875rem;
+            font-weight: 400;
+            line-height: 1.6;
+            background-color: var(--enterprise-bg-primary);
+            color: var(--enterprise-text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        /* Skip to main content for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: var(--enterprise-brand-primary);
+            color: white;
+            padding: 8px 16px;
+            text-decoration: none;
+            border-radius: 0 4px 0 0;
+            z-index: 9999;
+            font-weight: 500;
+        }
+        
+        .skip-link:focus {
+            top: 0;
+        }
+        
+        /* Focus styles for accessibility */
+        *:focus {
+            outline: 2px solid var(--enterprise-border-accent);
+            outline-offset: 2px;
+        }
+        
+        button:focus,
+        input:focus,
+        select:focus,
+        textarea:focus,
+        a:focus {
+            outline: 2px solid var(--enterprise-border-accent);
+            outline-offset: 2px;
+        }
+    </style>
+    
+    <!-- Load critical CSS files -->
+    <link href="{% static 'css/modals.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/critical.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive-enhancements.css' %}">
+    <link rel="stylesheet" href="{% static 'css/advanced-animations.css' %}">
+    
+    <!-- Preload non-critical CSS -->
+    <link rel="preload" href="{% static 'css/main.css' %}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{% static 'css/main.css' %}"></noscript>
+    
+    <!-- Enterprise Design System -->
+    <link rel="stylesheet" href="{% static 'css/enterprise.css' %}">
+    <link rel="stylesheet" href="{% static 'css/enterprise-design-system.css' %}">
+    
+    <!-- Preload fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'images/apple-touch-icon.png' %}">
+    
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#0A74DA">
+    <meta name="msapplication-TileColor" content="#0A74DA">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Enterprise Navigation -->
+    <nav class="enterprise-navbar" role="navigation" aria-label="Main navigation" id="main-navbar">
+        <div class="enterprise-nav-container">
+            <!-- Brand Logo -->
+            <a href="/" class="enterprise-nav-brand" aria-label="SafeNest Home">
+                <div class="enterprise-brand-icon">
+                    <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                </div>
+                <span class="enterprise-brand-text">SafeNest</span>
+            </a>
+            
+            <!-- Desktop Navigation -->
+            <div class="enterprise-nav-menu" id="primary-menu">
+                <!-- Smart Home Menu -->
+                <div class="enterprise-nav-dropdown" role="menuitem">
+                    <button class="enterprise-nav-dropdown-toggle" role="button" aria-expanded="false" aria-controls="smart-home-menu">
+                        <i class="fas fa-home" aria-hidden="true"></i>
+                        <span>Smart Home</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div class="enterprise-nav-dropdown-menu" id="smart-home-menu" role="menu">
+                        <a href="/devices/" class="enterprise-nav-dropdown-item" role="menuitem">
+                            <i class="fas fa-microchip" aria-hidden="true"></i>
+                            <span>Devices</span>
+                        </a>
+                        <a href="/security/" class="enterprise-nav-dropdown-item" role="menuitem">
+                            <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            <span>Security</span>
+                        </a>
+                        <a href="/energy/" class="enterprise-nav-dropdown-item" role="menuitem">
+                            <i class="fas fa-bolt" aria-hidden="true"></i>
+                            <span>Energy</span>
+                        </a>
+                        <a href="/automation/" class="enterprise-nav-dropdown-item" role="menuitem">
+                            <i class="fas fa-cogs" aria-hidden="true"></i>
+                            <span>Automation</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- AI Architecture Menu -->
+                <div class="enterprise-nav-dropdown" role="menuitem">
+                    <button class="enterprise-nav-dropdown-toggle" role="button" aria-expanded="false" aria-controls="ai-architecture-menu">
+                        <i class="fas fa-cube" aria-hidden="true"></i>
+                        <span>AI Architecture</span>
+                        <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </button>
+                    <div class="enterprise-nav-dropdown-menu" id="ai-architecture-menu" role="menu">
+                        <a href="/architecture/" class="enterprise-nav-dropdown-item" role="menuitem">
+                            <i class="fas fa-magic" aria-hidden="true"></i>
+                            <span>AI Generator</span>
+                        </a>
+                        <a href="/materials/" class="enterprise-nav-dropdown-item" role="menuitem">
+                            <i class="fas fa-calculator" aria-hidden="true"></i>
+                            <span>Materials</span>
+                        </a>
+                        <a href="/architects/" class="enterprise-nav-dropdown-item" role="menuitem">
+                            <i class="fas fa-users" aria-hidden="true"></i>
+                            <span>Architects</span>
+                        </a>
+                        <a href="/consultation/" class="enterprise-nav-dropdown-item" role="menuitem">
+                            <i class="fas fa-comments" aria-hidden="true"></i>
+                            <span>Consultation</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- AI Assistant -->
+                <a href="/ai/" class="enterprise-nav-link" role="menuitem">
+                    <i class="fas fa-robot" aria-hidden="true"></i>
+                    <span>AI Assistant</span>
+                </a>
+            </div>
+
+            <!-- Navigation Actions -->
+            <div class="enterprise-nav-actions">
+                <!-- Search -->
+                <div class="enterprise-search-container" role="search">
+                    <input type="search"
+                           class="enterprise-search-input"
+                           placeholder="Search devices, settings, help..."
+                           aria-label="Search">
+                    <button class="enterprise-search-button" aria-label="Submit search">
+                        <i class="fas fa-search" aria-hidden="true"></i>
+                    </button>
+                </div>
+                
+                <!-- Theme Toggle -->
+                <button class="enterprise-theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme" aria-pressed="false">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                </button>
+                
+                <!-- User Menu -->
+                <div class="enterprise-user-menu">
+                    <a href="/accounts/login/" class="enterprise-btn enterprise-btn-primary">
+                        <i class="fas fa-sign-in-alt" aria-hidden="true"></i>
+                        <span>Login</span>
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="enterprise-mobile-menu-toggle" id="mobile-menu-toggle"
+                        aria-expanded="false"
+                        aria-controls="primary-menu"
+                        aria-label="Toggle navigation menu">
+                    <i class="fas fa-bars" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="enterprise-main-content" role="main">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Notification System -->
+    <div id="notification-root" class="enterprise-notification-container" role="region" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Page Footer -->
+    <footer class="enterprise-footer" role="contentinfo">
+        <div class="enterprise-container">
+            <div class="enterprise-grid enterprise-grid-cols-4">
+                <div class="enterprise-footer-section">
+                    <h3 class="enterprise-heading-6">SafeNest</h3>
+                    <p class="enterprise-body-text enterprise-text-tertiary">
+                        AI-powered smart home and architecture platform for intelligent living.
+                    </p>
+                    <div class="enterprise-social-links">
+                        <a href="#" class="enterprise-social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="enterprise-social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="enterprise-social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="enterprise-social-link" aria-label="GitHub">
+                            <i class="fab fa-github" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="enterprise-footer-section">
+                    <h4 class="enterprise-heading-6">Products</h4>
+                    <ul class="enterprise-footer-links">
+                        <li><a href="/devices/" class="enterprise-footer-link">Smart Devices</a></li>
+                        <li><a href="/security/" class="enterprise-footer-link">Security Systems</a></li>
+                        <li><a href="/energy/" class="enterprise-footer-link">Energy Management</a></li>
+                        <li><a href="/automation/" class="enterprise-footer-link">Automation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="enterprise-footer-section">
+                    <h4 class="enterprise-heading-6">Services</h4>
+                    <ul class="enterprise-footer-links">
+                        <li><a href="/architecture/" class="enterprise-footer-link">AI Architecture</a></li>
+                        <li><a href="/materials/" class="enterprise-footer-link">Materials Library</a></li>
+                        <li><a href="/architects/" class="enterprise-footer-link">Find Architects</a></li>
+                        <li><a href="/consultation/" class="enterprise-footer-link">Consultation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="enterprise-footer-section">
+                    <h4 class="enterprise-heading-6">Support</h4>
+                    <ul class="enterprise-footer-links">
+                        <li><a href="/help/" class="enterprise-footer-link">Help Center</a></li>
+                        <li><a href="/docs/" class="enterprise-footer-link">Documentation</a></li>
+                        <li><a href="/api/" class="enterprise-footer-link">API Reference</a></li>
+                        <li><a href="/contact/" class="enterprise-footer-link">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="enterprise-footer-bottom">
+                <div class="enterprise-flex enterprise-flex-between">
+                    <p class="enterprise-caption">
+                        &copy; 2023 SafeNest Technologies. All rights reserved.
+                    </p>
+                    <div class="enterprise-footer-legal">
+                        <a href="/privacy/" class="enterprise-footer-link">Privacy Policy</a>
+                        <a href="/terms/" class="enterprise-footer-link">Terms of Service</a>
+                        <a href="/cookies/" class="enterprise-footer-link">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Inline critical JavaScript for fastest interaction -->
+    <script>
+        // Enhanced theme management with system preference detection
+        function initializeTheme() {
+            const html = document.documentElement;
+            const themeToggle = document.querySelector('.enterprise-theme-toggle');
+            let currentTheme = html.getAttribute('data-theme');
+            
+            // Check for saved theme preference or system preference
+            if (!localStorage.getItem('theme')) {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                currentTheme = prefersDark ? 'dark' : 'light';
+            } else {
+                currentTheme = localStorage.getItem('theme');
+            }
+            
+            // Apply theme
+            html.setAttribute('data-theme', currentTheme);
+            
+            // Update theme toggle
+            if (themeToggle) {
+                const icon = themeToggle.querySelector('i');
+                if (icon) {
+                    icon.className = currentTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+                }
+                themeToggle.setAttribute('aria-pressed', currentTheme === 'light');
+            }
+            
+            // Listen for system theme changes
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                if (!localStorage.getItem('theme')) {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    html.setAttribute('data-theme', newTheme);
+                    
+                    if (themeToggle) {
+                        const icon = themeToggle.querySelector('i');
+                        if (icon) {
+                            icon.className = newTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+                        }
+                        themeToggle.setAttribute('aria-pressed', newTheme === 'light');
+                    }
+                }
+            });
+            
+            return currentTheme;
+        }
+        
+        // Enterprise navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize theme first
+            initializeTheme();
+            
+            const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+            const primaryMenu = document.getElementById('primary-menu');
+            const navbar = document.getElementById('main-navbar');
+            
+            // Mobile navigation toggle
+            if (mobileMenuToggle && primaryMenu) {
+                mobileMenuToggle.addEventListener('click', function() {
+                    const isOpen = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isOpen);
+                    primaryMenu.classList.toggle('enterprise-mobile-open');
+                });
+                
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (!mobileMenuToggle.contains(event.target) && !primaryMenu.contains(event.target)) {
+                        if (primaryMenu.classList.contains('enterprise-mobile-open')) {
+                            mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                            primaryMenu.classList.remove('enterprise-mobile-open');
+                        }
+                    }
+                });
+            }
+            
+            // Enhanced theme toggle functionality
+            const themeToggle = document.querySelector('.enterprise-theme-toggle');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    const isPressed = this.getAttribute('aria-pressed') === 'true';
+                    this.setAttribute('aria-pressed', !isPressed);
+                    
+                    // Toggle theme
+                    const html = document.documentElement;
+                    const currentTheme = html.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                    
+                    html.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                    
+                    // Update icon with animation
+                    const icon = this.querySelector('i');
+                    if (icon) {
+                        icon.style.transform = 'rotate(360deg)';
+                        icon.className = newTheme === 'light' ? 'fas fa-sun' : 'fas fa-moon';
+                        
+                        // Reset transform after animation
+                        setTimeout(() => {
+                            icon.style.transform = '';
+                        }, 300);
+                    }
+                    
+                    // Dispatch theme change event
+                    window.dispatchEvent(new CustomEvent('themeChange', { detail: { theme: newTheme } }));
+                });
+            }
+            
+            // Enhanced dropdown menu functionality
+            const dropdownToggles = document.querySelectorAll('.enterprise-nav-dropdown-toggle');
+            dropdownToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const isOpen = this.getAttribute('aria-expanded') === 'true';
+                    this.setAttribute('aria-expanded', !isOpen);
+                    
+                    // Close other dropdowns
+                    dropdownToggles.forEach(otherToggle => {
+                        if (otherToggle !== this) {
+                            otherToggle.setAttribute('aria-expanded', 'false');
+                            const dropdownMenu = otherToggle.nextElementSibling;
+                            if (dropdownMenu) {
+                                dropdownMenu.classList.remove('enterprise-dropdown-open');
+                            }
+                        }
+                    });
+                    
+                    // Toggle current dropdown
+                    const dropdownMenu = this.nextElementSibling;
+                    if (isOpen) {
+                        dropdownMenu.classList.remove('enterprise-dropdown-open');
+                    } else {
+                        dropdownMenu.classList.add('enterprise-dropdown-open');
+                    }
+                });
+            });
+            
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('.enterprise-nav-dropdown')) {
+                    dropdownToggles.forEach(toggle => {
+                        toggle.setAttribute('aria-expanded', 'false');
+                        const dropdownMenu = toggle.nextElementSibling;
+                        if (dropdownMenu) {
+                            dropdownMenu.classList.remove('enterprise-dropdown-open');
+                        }
+                    });
+                }
+            });
+            
+            // Enhanced scroll effect to navigation
+            let lastScrollTop = 0;
+            let scrollTimeout;
+            
+            window.addEventListener('scroll', function() {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                
+                // Add scrolled class for styling
+                if (scrollTop > 50) {
+                    navbar.classList.add('enterprise-navbar-scrolled');
+                } else {
+                    navbar.classList.remove('enterprise-navbar-scrolled');
+                }
+                
+                // Hide/show navbar on scroll
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    // Scrolling down
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    // Scrolling up
+                    navbar.style.transform = 'translateY(0)';
+                }
+                
+                lastScrollTop = scrollTop;
+                
+                // Clear any existing timeout
+                clearTimeout(scrollTimeout);
+                
+                // Set a timeout to reset the navbar position
+                scrollTimeout = setTimeout(() => {
+                    navbar.style.transform = 'translateY(0)';
+                }, 1000);
+            });
+            
+            // Initialize scroll reveal animations
+            initializeScrollReveal();
+            
+            // Initialize search functionality
+            initializeSearch();
+            
+            // Console log initialization
+            console.log('SafeNest Enterprise initialized successfully!');
+        });
+        
+        // Scroll reveal functionality
+        function initializeScrollReveal() {
+            const reveals = document.querySelectorAll('.enterprise-scroll-reveal, .enterprise-fade-in, .enterprise-scale-in');
+            
+            function reveal() {
+                reveals.forEach(element => {
+                    const windowHeight = window.innerHeight;
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < windowHeight - elementVisible) {
+                        element.classList.add('enterprise-reveal-active');
+                    }
+                });
+            }
+            
+            // Initial check
+            reveal();
+            
+            // Check on scroll
+            window.addEventListener('scroll', reveal);
+        }
+        
+        // Enhanced search functionality
+        function initializeSearch() {
+            const searchInput = document.querySelector('.enterprise-search-input');
+            const searchButton = document.querySelector('.enterprise-search-button');
+            
+            if (searchInput && searchButton) {
+                searchButton.addEventListener('click', function() {
+                    performSearch(searchInput.value);
+                });
+                
+                searchInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        performSearch(this.value);
+                    }
+                });
+            }
+        }
+        
+        // Perform search action
+        function performSearch(query) {
+            if (query.trim()) {
+                // Implement search functionality
+                console.log('Searching for:', query);
+                // In a real application, this would navigate to a search results page
+                // or perform an AJAX search
+            }
+        }
+        
+        // Enhanced smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Performance monitoring
+        if ('PerformanceObserver' in window) {
+            const perfObserver = new PerformanceObserver((list) => {
+                for (const entry of list.getEntries()) {
+                    console.log('Performance entry:', entry);
+                }
+            });
+            
+            perfObserver.observe({ entryTypes: ['navigation', 'resource', 'paint'] });
+        }
+    </script>
+    
+    <!-- Load non-critical JavaScript with defer -->
+    <script src="{% static 'js/main.js' %}" defer></script>
+    
+    <!-- Load advanced animations -->
+    <script src="{% static 'js/advanced-animations.js' %}" defer></script>
+    
+    <!-- Load notification system -->
+    <script src="{% static 'js/notifications.js' %}" defer></script>
+    
+    <!-- Load dashboard charts -->
+    <script src="{% static 'js/dashboard-charts.js' %}" defer></script>
+    
+    <!-- Load performance monitoring script -->
+    <script src="{% static 'js/performance-monitor.js' %}" defer></script>
+    
+    <!-- Load enterprise loading optimizer -->
+    <script src="{% static 'js/enterprise-loading-optimizer.js' %}" defer></script>
+    
+    <!-- Load enterprise components -->
+    <script src="{% static 'js/enterprise-components.js' %}" defer></script>
+    
+    <!-- Load accessibility module -->
+    <script src="{% static 'js/enterprise-accessibility.js' %}" defer></script>
+    
+    <!-- Load responsive enhancer -->
+    <script src="{% static 'js/enterprise-responsive.js' %}" defer></script>
+    
+    {% block scripts %}{% endblock %}
+</body>
+</html>
